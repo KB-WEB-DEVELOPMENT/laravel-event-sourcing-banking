@@ -112,6 +112,7 @@ class FundsTransferProjectorTest extends TestCase
 	public function test_valid_transfer(): void
     {
 		$amount = 8.99;
+        
 		$creditor_account_uuid = '9897a490-2cfd-4943-86ce-d287bf04342f';
 		
 		$transferFundsAggRootObj = new TransferFundsAggregateRoot();
