@@ -9,6 +9,6 @@ class InsufficientFundsException extends DomainException
     {
         $missing_funds = abs(round($balance,2) + round((float)$overdraft,2) - round($amount,2));
 		
-		return new static("There is insufficient funds, ({$missing_funds} is missing) on your bank account to carry out the bank transfer");
+		return new static("There is insufficient funds, {$missing_funds} is missing on your bank account to carry out the bank transfer");
     }	
 }
