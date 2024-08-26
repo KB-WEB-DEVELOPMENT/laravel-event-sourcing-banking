@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\User;
-use App\Models\Account;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -19,14 +18,14 @@ use Illuminate\Support\Str;
 |
 */
 
-class AccountFactory extends Factory
+class UserFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var class-string<\Illuminate\Database\Eloquent\Model>
      */
-    protected $model = Account::class;
+    protected $model = User::class;
 
     /**
      * Define the model's default state.
@@ -34,12 +33,13 @@ class AccountFactory extends Factory
      * @return array
      */
     public function definition(): array
-    {		
-		return [
-            'account_uuid' => fake()->uuid(),
-            'balance' => fake()->randomFloat(2,1000,2000),
-            'overdraft' => fake()->numberBetween(0,200),
-			'user_id' =>  User::factory(),
+    {
+        return [
+            'name' => fake()->unique()->name(),
+            'email' => fake()->unique()->safeEmail(),
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
         ];
     }
 }

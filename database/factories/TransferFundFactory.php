@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
 use App\Models\Account;
+use App\Models\TransferFund;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -19,14 +19,14 @@ use Illuminate\Support\Str;
 |
 */
 
-class AccountFactory extends Factory
+class TransferFundFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var class-string<\Illuminate\Database\Eloquent\Model>
      */
-    protected $model = Account::class;
+    protected $model = TransferFund::class;
 
     /**
      * Define the model's default state.
@@ -35,11 +35,13 @@ class AccountFactory extends Factory
      */
     public function definition(): array
     {		
+		$debitor_account =  Account::factory();
+		$creditor_account = Account::factory();
+		
 		return [
-            'account_uuid' => fake()->uuid(),
-            'balance' => fake()->randomFloat(2,1000,2000),
-            'overdraft' => fake()->numberBetween(0,200),
-			'user_id' =>  User::factory(),
+            'debitor_account_uuid' => $debitor_account->account_uuid,
+            'creditor_account_uuid' => $creditor_account->account_uuid,
+            'amount' => fake()->randomFloat(2,200,400),
         ];
     }
 }
