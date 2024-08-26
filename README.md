@@ -24,7 +24,8 @@ OfferLoanReactor
 
 AccountAggregateRoot, TransferFundsAggregateRoot
 
-![alt text] (public/laravel10-sourced-event-banking-application-diagram-KB-WEB-DEVELOPMENT.png)
+! [alt text] 
+(https://github.com/KB-WEB-DEVELOPMENT/laravel-event-sourcing-banking/blob/main/public/images/diagram.PNG)
 
 <b>Installation steps:</b>
 
