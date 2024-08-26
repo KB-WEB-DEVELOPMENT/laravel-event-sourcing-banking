@@ -62,7 +62,5 @@ class TransferFundsAggregateRootTest
 					->assertRecorded([
 						new FundsTransferred(9.99,$this->creditor_account->account_uuid)
 					]);        
-    }
-	
-    
+    }    
 }
