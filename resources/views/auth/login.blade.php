@@ -17,6 +17,5 @@
                 </div>
             </form>
         </div>
-        @include('partials.make-it-rain')
     </div>
 @endsection
