@@ -26,7 +26,7 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
 	
 	Route::get('/account/index', [AccountsController::class, 'index'])->name('account-index');
-	Route::post('/account/created',  [AccountsController::class, 'created']);
+	Route::post('/account/created',  [AccountsController::class, 'created'])->name('created');
 	Route::get('/account/deposit', [AccountsController::class, 'deposit'])->name('deposit');
 	Route::post('/account/deposited', [AccountsController::class, 'deposited'])->name('deposited');
 	Route::get('/account/withdraw', [AccountsController::class, 'withdraw'])->name('withdraw');
