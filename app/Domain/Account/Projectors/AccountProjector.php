@@ -61,7 +61,7 @@ class AccountProjector extends Projector
 		
 		$account = Account::where('user_id',$user_id)->first();
 		
-		$account->overdraft = $event->amount;
+		$account->overdraft = $event->overdraft;
     
 		$account->save();
 	}
