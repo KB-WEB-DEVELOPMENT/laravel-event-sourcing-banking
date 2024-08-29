@@ -71,11 +71,7 @@ class AccountProjector extends Projector
         $user_id = Auth::id();
 
         $account = Account::where('user_id',$user_id)->first();
-
-        $account->balance = 0.00;
-
-        $account->save(); 
-
+        
 		$account->delete();
     }
 }
