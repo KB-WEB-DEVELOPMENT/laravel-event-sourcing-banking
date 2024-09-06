@@ -14,6 +14,8 @@ class Account extends Model
 	
 	protected $table = 'accounts';
 
+    protected $fillable = ['account_uuid','balance','overdraft','user_id'];
+
     public $guarded = [];
 	
     public function user(): BelongsTo
