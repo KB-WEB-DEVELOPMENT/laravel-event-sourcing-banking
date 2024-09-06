@@ -14,6 +14,8 @@ class TransferFund extends Model
 	
 	protected $table = 'transfer_funds';
 
+    protected $fillable = ['debitor_account_uuid','creditor_account_uuid','amount'];
+
     public $guarded = [];
 	
     public function debitorAccount(): BelongsTo
