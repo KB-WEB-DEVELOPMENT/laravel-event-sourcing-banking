@@ -5,7 +5,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<p class="lead mb-0">User name:  {{ $user->name }}</p>
-						<p class="lead mb-0">User email: {{ $user->name }}</p>
+						<p class="lead mb-0">User email: {{ $user->email }}</p>
 						<br/>
 						<h4>Transfer funds to another bank account</h4>
 						<form method="POST" action="{{ route('transfers-submitted') }}">         
