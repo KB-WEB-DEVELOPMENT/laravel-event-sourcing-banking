@@ -24,6 +24,8 @@ class TransferFundsProjector extends Projector
 		$user_id = Auth::id();
 		
 		$debitor_account = Account::where('user_id',$user_id)->first();
+
+        $debitor_account_uuid = $debitor_account->account_uuid;
 		
 		$creditor_account = Account::where('account_uuid',$creditor_account_uuid)->first();
 
