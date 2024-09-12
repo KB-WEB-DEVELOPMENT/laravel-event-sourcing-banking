@@ -5,7 +5,7 @@
 				<h4>DEPOSIT FUNDS ON YOUR ACCOUNT</h4>
 					<div class="row">
 						<p class="lead mb-0">User name:  {{ $user->name }}</p>
-						<p class="lead mb-0">User email: {{ $user->name }}</p>
+						<p class="lead mb-0">User email: {{ $user->email }}</p>
 						<br/><br/>
 						<form method="POST" action="{{ route('deposited') }}">         
 							{{ csrf_field() }}
