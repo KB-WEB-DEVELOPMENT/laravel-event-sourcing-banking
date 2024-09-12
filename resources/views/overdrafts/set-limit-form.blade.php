@@ -5,7 +5,7 @@
 				<h4>UPDATE YOUR BANK ACCOUNT OVERDRAFT</h4>
 					<div class="row">
 						<p class="lead mb-0">User name:  {{ $user->name }}</p>
-						<p class="lead mb-0">User email: {{ $user->name }}</p>
+						<p class="lead mb-0">User email: {{ $user->email }}</p>
 						<br/><br/>
 						<form method="POST" action="{{ route('updated') }}">         
 							{{ csrf_field() }}
