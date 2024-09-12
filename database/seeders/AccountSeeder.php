@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\TransferFund;
+use App\Models\Account;
 
 use Illuminate\Database\Seeder;
 
