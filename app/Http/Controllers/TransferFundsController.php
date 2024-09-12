@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
-use App\Models\TransferFunds;
+use App\Models\TransferFund;
 
 use App\Domain\Account\TransferFundsAggregateRoot;
 
