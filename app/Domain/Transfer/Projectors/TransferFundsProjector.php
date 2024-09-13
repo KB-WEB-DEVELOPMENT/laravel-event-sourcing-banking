@@ -7,7 +7,7 @@ use Ramsey\Uuid\Uuid;
 
 use App\Models\User;
 use App\Models\Account;
-use App\Models\TransferFunds;
+use App\Models\TransferFund;
 
 use App\Domain\Transfer\Events\FundsTransferred;
 
@@ -19,7 +19,7 @@ class TransferFundsProjector extends Projector
     {
 		$creditor_account_uuid = $event->creditor_account_uuid;
 
-		$tranferred_amount = round($event->amount,2);
+		$transferred_amount = round($event->amount,2);
 
 		$user_id = Auth::id();
 		
@@ -29,9 +29,9 @@ class TransferFundsProjector extends Projector
 		
 		$creditor_account = Account::where('account_uuid',$creditor_account_uuid)->first();
 
-		$debitor_account->balance -= $tranferred_amount;
+		$debitor_account->balance -= $transferred_amount;
 				
-		$creditor_account->balance += $tranferred_amount;
+		$creditor_account->balance += $transferred_amount;
 				
 		$debitor_account->save();
 		
@@ -40,7 +40,7 @@ class TransferFundsProjector extends Projector
 		TransferFund::create([
             'debitor_account_uuid' => $debitor_account_uuid,
 			'creditor_account_uuid' => $creditor_account_uuid,
-			'amount' => $tranferred_amount,
+			'amount' => $transferred_amount,
         ]);
 	}
 }
