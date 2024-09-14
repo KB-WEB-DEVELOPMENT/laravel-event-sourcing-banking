@@ -23,11 +23,11 @@ class TransferFundsProjector extends Projector
 
 		$user_id = Auth::id();
 		
-		$debitor_account = Account::where('user_id',$user_id)->first();
+		$debitor_account = Account::where('user_id',$user_id)->firstOrFail();
 
         $debitor_account_uuid = $debitor_account->account_uuid;
 		
-		$creditor_account = Account::where('account_uuid',$creditor_account_uuid)->first();
+		$creditor_account = Account::where('account_uuid',$creditor_account_uuid)->firstOrFail();
 
 		$debitor_account->balance -= $transferred_amount;
 				
