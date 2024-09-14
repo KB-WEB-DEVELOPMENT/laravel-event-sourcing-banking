@@ -37,7 +37,7 @@ class AccountProjector extends Projector
     {
         $user_id = Auth::id();
 		
-		$account = Account::where('user_id',$user_id)->first();
+		$account = Account::where('user_id',$user_id)->firstOrFail();
 
         $account->balance += round($event->amount,2);
 
@@ -48,7 +48,7 @@ class AccountProjector extends Projector
     {
         $user_id = Auth::id();
 		
-		$account = Account::where('user_id',$user_id)->first();
+		$account = Account::where('user_id',$user_id)->firstOrFail();
 
         $account->balance -= round($event->amount,2);
 
@@ -59,7 +59,7 @@ class AccountProjector extends Projector
     {
         $user_id = Auth::id();
 		
-		$account = Account::where('user_id',$user_id)->first();
+		$account = Account::where('user_id',$user_id)->firstOrFail();
 		
 		$account->overdraft = $event->overdraft;
     
@@ -70,7 +70,7 @@ class AccountProjector extends Projector
     {
         $user_id = Auth::id();
 
-        $account = Account::where('user_id',$user_id)->first();
+        $account = Account::where('user_id',$user_id)->firstOrFail();
         
 		$account->delete();
     }
