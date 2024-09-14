@@ -23,7 +23,7 @@ class AccountsController extends Controller
 			return redirect('/login');
 		}
 		
-		$account = Account::where('user_id',Auth::id())->first();
+		$account = Account::where('user_id',Auth::id())->firstOrFail();
         
 		return view('accounts.index', compact('user','account'));
     }
@@ -32,7 +32,7 @@ class AccountsController extends Controller
     {
         $user_id = Auth::id();
 		
-		$account = Account::where('user_id',$user_id)->first();
+		$account = Account::where('user_id',$user_id)->firstOrFail();
 		
 		if ($account) {
 			throw CannotCreateMultipleAccountsException::printZeroDepositMessage();
@@ -48,7 +48,7 @@ class AccountsController extends Controller
     {
 		$user = Auth::user();
 		
-		$account = Account::where('user_id',Auth::id())->first();
+		$account = Account::where('user_id',Auth::id())->firstOrFail();
         
 		return view('accounts.deposit', compact('user','account'));
     }
@@ -67,7 +67,7 @@ class AccountsController extends Controller
     {
 		$user = Auth::user();
 		
-		$account = Account::where('user_id',Auth::id())->first();
+		$account = Account::where('user_id',Auth::id())->firstOrFail();
         
 		return view('accounts.withdraw', compact('user','account'));
     }
@@ -86,7 +86,7 @@ class AccountsController extends Controller
     {
 		$user = Auth::user();
 		
-		$account = Account::where('user_id',Auth::id())->first();
+		$account = Account::where('user_id',Auth::id())->firstOrFail();
         
 		return view('accounts.update', compact('user','account'));
     }
