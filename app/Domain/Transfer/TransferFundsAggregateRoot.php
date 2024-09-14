@@ -55,7 +55,7 @@ class TransferFundsAggregateRoot extends AggregateRoot
 		
 		$user_id = Auth::id();
 		
-		$account = Account::where('user_id',$user_id)->first();
+		$account = Account::where('user_id',$user_id)->firstOrFail();
 		
 		$available_funds = round($account->balance,2) + round($account->overdraft,2);
 
@@ -70,7 +70,9 @@ class TransferFundsAggregateRoot extends AggregateRoot
 		
 	public function checkCreditor(string $creditor_account_uuid): bool
     {  
-		$found_creditor_account_uuid = Account::where('account_uuid',$creditor_account_uuid)->first()->account_uuid;
+		$found_account = Account::where('account_uuid',$creditor_account_uuid)->firstOrFail();
+
+        $found_creditor_account_uuid = $found_account->account_uuid;
 	 
 		if (!$found_creditor_account_uuid) {
 			throw CouldNotFindCreditorAccountException::printMessage($creditor_account_uuid);
@@ -82,11 +84,11 @@ class TransferFundsAggregateRoot extends AggregateRoot
     {
 		$user_id = Auth::id();
 		
-		$debitor_account_uuid = Account::where('user_id',$user_id)->first()->account_uuid;
+		$found_account = Account::where('user_id',$user_id)->firstOrFail();
 		
-		$found_creditor_account_uuid = Account::where('account_uuid',$creditor_account_uuid)->first()->account_uuid;
+		$found_debitor_account_uuid = $found_account->account_uuid;
 		
-		if ($debitor_account_uuid == $found_creditor_account_uuid) {
+		if ($creditor_account_uuid == $found_debitor_account_uuid) {
 			throw SameAccountsException::printMessage($creditor_account_uuid);
 		}		
 		return true;
