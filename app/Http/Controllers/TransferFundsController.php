@@ -17,7 +17,7 @@ class TransferFundsController extends Controller
     {
 		$user = Auth::user();
 		
-		$account = Account::where('user_id',Auth::id())->first();
+		$account = Account::where('user_id',Auth::id())->firstOrFail();
         
 		return view('transfers.create-transfer-form', compact('user','account'));
     }
