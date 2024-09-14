@@ -62,7 +62,7 @@ class AccountAggregateRoot extends AggregateRoot
 					
 		$user_id = Auth::id();
 		
-		$account = Account::where('user_id',$user_id)->first();
+		$account = Account::where('user_id',$user_id)->firstOrFail();
 				
 		$available_funds = $account->balance + round($account->overdraft,2);
 
@@ -116,7 +116,7 @@ class AccountAggregateRoot extends AggregateRoot
     {
 		$user_id = Auth::id();
 		
-		$account = Account::where('user_id',$user_id)->first();	
+		$account = Account::where('user_id',$user_id)->firstOrFail();
 		
 		return $account->overdraft > 0;	
     }
@@ -125,7 +125,7 @@ class AccountAggregateRoot extends AggregateRoot
     {
 		$user_id = Auth::id();
 		
-		$account = Account::where('user_id',$user_id)->first();	
+		$account = Account::where('user_id',$user_id)->firstOrFail();	
 		
 		return $account->balance ===  round(0,2);	
     }	
