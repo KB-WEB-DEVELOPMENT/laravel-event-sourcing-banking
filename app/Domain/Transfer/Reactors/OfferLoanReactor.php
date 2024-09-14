@@ -22,7 +22,7 @@ class OfferLoanReactor extends Reactor implements ShouldQueue
     {
         $user_id = Auth::id();
 		
-		$account = Account::where('user_id',$user_id)->first();
+		$account = Account::where('user_id',$user_id)->firstOrFail();
 
         $user = $account->user;
 		
