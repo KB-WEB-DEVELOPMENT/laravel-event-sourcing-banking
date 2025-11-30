@@ -13,9 +13,7 @@ return new class extends Migration
             $table->uuid('aggregate_uuid');
             $table->unsignedInteger('aggregate_version');
             $table->jsonb('state');
-
             $table->timestamps();
-
             $table->index('aggregate_uuid');
         });
     }
